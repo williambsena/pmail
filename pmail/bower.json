@@ -1,0 +1,31 @@
+{
+  "name": "pmail",
+  "version": "1.0.0",
+  "homepage": "https://github.com/williamsena13/pmail",
+  "authors": [
+    "William B. Sena <williamsena13@gmail.com>"
+  ],
+  "description": "Email client interface powered by Polymer",
+  "main": "index.html",
+  "keywords": [
+    "polymer"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "core-scaffold": "Polymer/core-scaffold#~0.5.1",
+    "core-icon": "Polymer/core-icon#~0.5.1",
+    "paper-item": "Polymer/paper-item#~0.5.1",
+    "paper-checkbox": "Polymer/paper-checkbox#~0.5.1",
+    "paper-fab": "Polymer/paper-fab#~0.5.1",
+    "paper-icon-button": "Polymer/paper-icon-button#~0.5.1",
+    "paper-spinner": "Polymer/paper-spinner#~0.5.1"
+  }
+}

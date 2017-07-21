@@ -1,0 +1,57 @@
+<polymer-element name="pmail-search">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      .pmail-search paper-icon-button{
+        vertical-align: middle;
+      }
+      .pmail-search input[type="text"] {
+        border: 0;
+        padding: 20px 0;
+        visibility: visible;
+        margin: 0;
+        display: inline-block;
+        width: 0;
+        vertical-align: middle;
+        background-color: transparent;
+        color: #fff;
+        width: 0;
+        font-size: 18px;
+        outline: none;
+      }
+      .pmail-search.on-search {
+        text-align: left;
+      }
+      .pmail-search.on-search input[type="text"]{
+        padding: 20px 5px;
+        width: 65%;
+      }
+    </style>
+    <div class="pmail-search {{displaySearch ? 'on-search' : ''}}">
+      <paper-icon-button icon="search" on-tap={{onDisplaySearch}}></paper-icon-button>
+      <input type="text" id="s" on-blur={{onDisplaySearch}} on-keyup={{setFilter}}>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      publish: {
+        displaySearch: {value: false, reflect: true}
+      },
+      setFilter: function() {
+        document.querySelector("pmail-list").setAttribute("filter", this.$.s.value);
+      },
+      onDisplaySearch: function(e, detail, sender) {
+        this.displaySearch = !this.displaySearch;
+        e.stopPropagation();
+      },
+      displaySearchChanged: function () {
+        if(this.displaySearch){
+          this.$.s.value = "";
+          this.$.s.focus();
+        }
+      }
+    });
+  </script>
+</polymer-element>

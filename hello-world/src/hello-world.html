@@ -1,0 +1,22 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<polymer-element name="hello-world" attributes="name">
+  <template>
+    <style>
+    :host {
+      display: block;
+    }
+    </style>
+    <script>alert("Olá {{name}}!")</script>
+    <h1>Olá {{name}}!</h1>
+  </template>
+  <script>
+  Polymer({
+    ready: function () {
+      console.log("Fui criado!");
+    },
+    detached: function() {
+      console.log("Me deletaram!");
+    }
+  })
+  </script>
+</polymer-element>

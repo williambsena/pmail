@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>mPmail</title>
+  <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+  <link rel="import" href="elements.html" />
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="sources/stylesheets/pmail.css">
+</head>
+<body>
+  <paper-spinner id="mpmail-spinner" active></paper-spinner>
+
+  <core-scaffold id="mpmail" mode="waterfall-tall" hide>
+    <core-header-panel navigation flex mode="seamed" condenses="true">
+      <figure class="profile-photo">
+        <img src="http://www.gravatar.com/avatar/fff7258836f20ea66b061b49a51fe8dd?s=170">
+      </figure>
+      <div class="profile-infos">
+        <span>William B Sena</span>
+        <span>williamsena13@gmail.com</span>
+      </div>
+      <core-menu selected="0" excludedlocalnames="div" on-core-select="{{ menuSelect }}">
+        <paper-item class="sidebar-item">
+          <core-icon icon="inbox">
+          </core-icon> Inbox
+        </paper-item>
+        <paper-item class="sidebar-item">
+          <core-icon icon="send"></core-icon> Sent
+        </paper-item>
+        <div class="sidebar-sep">
+          Labels
+        </div>
+        <paper-item class="sidebar-item">
+          <core-icon icon="report"></core-icon> Spam
+        </paper-item>
+        <paper-item class="sidebar-item">
+          <core-icon icon="delete"></core-icon> Trash
+        </paper-item>
+      </core-menu>
+    </core-header-panel>
+
+    <pmail-search tool flex></pmail-search>
+    <pmail-list></pmail-list>
+
+  </core-scaffold>
+
+  <script src="sources/javascripts/pmail.js"></script>
+</body>
+</html>

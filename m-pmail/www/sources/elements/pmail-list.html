@@ -1,0 +1,195 @@
+<polymer-element name="pmail-list" attributes="filter">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      paper-item {
+        color: #757575;
+        border-top: 1px solid #e0e0e0;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 0 1%;
+      }
+      paper-item:first-child {
+        border: 0;
+      }
+      paper-checkbox {
+        width: 2%;
+        margin-right: 24px
+      }
+      .paper-item-content {
+        width: 78%;
+      }
+      .paper-item-content .subject {
+        font-style: italic;
+        color: #959595;
+        font-size: 14px;
+        font-weight: 400;
+      }
+      .paper-item-infos {
+        text-align: right;
+        width: 20%;
+      }
+      time[class="data"] {
+        width: 65px;
+        display: inline-block;
+      }
+      core-icon[icon="star"], core-icon[icon="star-outline"] {
+        margin-left: 15px;
+      }
+    </style>
+    <template repeat="{{mail in mails}}">
+      <paper-item>
+        <paper-checkbox></paper-checkbox>
+        <label class="paper-item-content">
+          <span>{{mail.name}}</span><br>
+          <span class="subject">{{ mail.subject }}</span>
+        </label>
+        <div class="paper-item-infos">
+          <template if="{{ mail.attachment }}">
+            <core-icon icon="attachment"></core-icon>
+          </template>
+          <time class="data">{{ mail.time }}</time>
+        </div>
+      </paper-item>
+    </template>
+  </template>
+  <script>
+    function search(string, myList){
+      var newArray = [];
+      for (var i=0; i < myList.length; i++) {
+          if (myList[i].name.indexOf(string) > -1) {
+              newArray.push(myList[i]);
+          }
+      }
+      return newArray;
+    }
+
+    Polymer({
+      filterChanged: function() {
+        if(this.filter) {
+          this.mails = (search(this.filter, this.mailsListOriginal).length > 0) ? search(this.filter, this.mailsListOriginal) : [];
+        } else {
+          this.mails = this.mailsListOriginal;
+        }
+      },
+      ready: function() {
+        this.mailsListOriginal = this.mails = [
+          {
+            name: 'Adam',
+            subject: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem vitae mollitia, delectus.',
+            time: "18:30",
+            attachment: true,
+            starred: false,
+            checked: false
+          },
+          {
+            name: 'Alex',
+            subject: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem vitae mollitia, delectus.',
+            time: "27 de nov",
+            attachment: false,
+            starred: false,
+            checked: false
+          },
+          {
+            name: 'Bob',
+            subject: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem vitae mollitia, delectus.',
+            time: "27 de nov",
+            attachment: true,
+            starred: true,
+            checked: false
+          },
+          {
+            name: 'Chuck',
+            subject: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem vitae mollitia, delectus.',
+            time: "27 de nov",
+            attachment: true,
+            starred: false,
+            checked: true
+          },
+          {
+            name: 'Cathy',
+            subject: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem vitae mollitia, delectus.',
+            time: "27 de nov",
+            attachment: false,
+            starred: false,
+            checked: false
+          },
+          {
+            name: 'Beto',
+            subject: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem vitae mollitia, delectus.',
+            time: "27 de nov",
+            attachment: true,
+            starred: true,
+            checked: false
+          },
+          {
+            name: 'Cid',
+            subject: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem vitae mollitia, delectus.',
+            time: "27 de nov",
+            attachment: true,
+            starred: false,
+            checked: true
+          },
+          {
+            name: 'Ray',
+            subject: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem vitae mollitia, delectus.',
+            time: "27 de nov",
+            attachment: false,
+            starred: false,
+            checked: false
+          },
+          {
+            name: 'Travis',
+            subject: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem vitae mollitia, delectus.',
+            time: "27 de nov",
+            attachment: true,
+            starred: true,
+            checked: false
+          },
+          {
+            name: 'Rick',
+            subject: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem vitae mollitia, delectus.',
+            time: "27 de nov",
+            attachment: true,
+            starred: false,
+            checked: true
+          },
+          {
+            name: 'Bran',
+            subject: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem vitae mollitia, delectus.',
+            time: "27 de nov",
+            attachment: false,
+            starred: false,
+            checked: false
+          },
+          {
+            name: 'Tar',
+            subject: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem vitae mollitia, delectus.',
+            time: "27 de nov",
+            attachment: true,
+            starred: true,
+            checked: false
+          },
+          {
+            name: 'Westeros',
+            subject: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem vitae mollitia, delectus.',
+            time: "27 de nov",
+            attachment: true,
+            starred: false,
+            checked: true
+          },
+          {
+            name: 'Grey',
+            subject: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem vitae mollitia, delectus.',
+            time: "27 de nov",
+            attachment: false,
+            starred: false,
+            checked: false
+          }
+        ];
+      }
+    });
+  </script>
+</polymer-element>
